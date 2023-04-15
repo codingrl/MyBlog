@@ -1,0 +1,19 @@
+.container {
+  width: 90%;
+  margin: auto;
+  padding: 100px 0;
+}
+.aboutText {
+  font-size: 64px;
+  line-height: 74px;
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.aboutLink {
+  font-size: 48px;
+  color: #000000;
+  display: block;
+  text-align: right;
+  margin-right: 70px;
+}
