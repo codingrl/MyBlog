@@ -2,21 +2,30 @@ import React, { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import styles from './registerpage.module.css';
+import { authServices } from '../../services/auth';
 
 const RegisterPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
-  
-  const handleSubmit = (e) => {
-    e.preventDefault()
+
+  const { registerUser } = authServices();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     const newUser = {
+      username: name,
       email,
-      name, 
-      password
+      password,
+    };
+    try {
+      const { data } = await registerUser(newUser);
+      console.log(data._doc);
+    } catch (err) {
+      console.log(err.response.data)
     }
-    console.log(newUser);
-  }
+  };
+  
   return (
     <section className={styles.wrapper}>
       <h1 className={styles.title}>Registration</h1>
@@ -29,7 +38,7 @@ const RegisterPage = () => {
           required
           style={{ marginBottom: '20px' }}
           value={email}
-          onChange={e => setEmail(e.target.value)}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <TextField
           label='Your name'
@@ -39,7 +48,7 @@ const RegisterPage = () => {
           required
           style={{ marginBottom: '20px' }}
           value={name}
-          onChange={e => setName(e.target.value)}
+          onChange={(e) => setName(e.target.value)}
         />
         <TextField
           label='Password'
@@ -49,7 +58,7 @@ const RegisterPage = () => {
           required
           style={{ marginBottom: '40px' }}
           value={password}
-          onChange={e => setPassword(e.target.value)}
+          onChange={(e) => setPassword(e.target.value)}
         />
         <Button
           fullWidth
