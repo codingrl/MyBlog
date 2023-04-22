@@ -1,6 +1,7 @@
 header {
   background-color: #BF94E8;
 }
+
 .nav {
   width: 90%;
   margin: auto;
@@ -9,8 +10,13 @@ header {
   align-items: center;
   gap: 15px;
 }
+
 .link {
   font-size: 24px;
   color: black;
   text-decoration: none;
+}
+
+.active {
+  border-bottom: 1px solid black;
 }

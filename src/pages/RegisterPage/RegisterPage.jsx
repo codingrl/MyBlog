@@ -28,7 +28,7 @@ const RegisterPage = () => {
     onSubmit: async (values) => {
       try {
         const { data } = await registerUser(values);
-        console.log(data._doc);
+        console.log(data);
         toast('Пользователь зарегистрирован');
       } catch (err) {
         toast('Email или Имя уже существуют');
